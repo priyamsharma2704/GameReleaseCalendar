@@ -99,3 +99,14 @@
     font-weight: 100px;;
 }
 
+#close
+{
+    /* background-color: #777777; */
+    font-weight: 1000;
+    float: right;
+    padding: 10px;
+}
+#close:hover{
+cursor: pointer;
+}
+

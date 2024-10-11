@@ -1,11 +1,19 @@
 
 
-function GameModal()
+function GameModal({closeModal, idx})
 {
+console.log(idx);
+    function handleClose()
+    {
+        closeModal(idx);
+    }
+
     return(
         <>
         <div className="modal">
             <div className="details">
+                <span id="close" onClick={handleClose}>X</span>
+                <br></br>
                 <p>
                     <span className="label"> Description</span> : <span id="description">sada</span>
                 </p>
