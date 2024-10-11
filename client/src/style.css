@@ -1,0 +1,101 @@
+
+/*------------ HEADER ---------------*/
+.heading
+{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-con
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.prevBtn
+{
+    float: left;
+    margin-left: 20px;
+}
+
+.nextBtn
+{
+    float: right;
+    margin-right: 20px;
+}
+
+.currMonthBtn
+{
+    text-align: center;
+}
+
+/*--------------- CALENDAR ---------------*/
+
+.calendar-con
+{
+    border: 1px solid rgb(7, 7, 7)1a;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    gap: 10px; /* spacing between the month cells */
+    padding: 20px;
+}
+
+.month-con
+{
+    background-color: #2e2d2d;
+    margin: 5px;
+    border-radius: 5px;
+    padding:5px;
+}
+
+#day-span
+{
+    background-color: #1a1a1a;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+
+/*--------------- GAME MODAL ---------------*/
+
+
+.modal-con
+{
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal
+{
+    background-color: white;
+    border-radius: 10px;
+    width: 500px;
+    color: #1a1a1a;
+    margin: 20px;
+    padding: 5px;
+}
+
+.label
+{
+    font-weight: 500;;
+}
+
+#description
+{
+    font-weight: 100px;;
+}
+
