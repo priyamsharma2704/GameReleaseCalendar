@@ -4,7 +4,7 @@ function Header()
     return(
         <>
             <div className="heading">
-                <h1>Game Release Calendar</h1>
+                <h1>Games Release Calendar</h1>
             </div>
 
             <div className="btn-con">

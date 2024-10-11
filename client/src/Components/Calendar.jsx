@@ -4,6 +4,14 @@ import GameModal from './GameModal.jsx';
 function Calendar()
 {
 
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    //console.log(currentMonth, currentYear);
+
+    let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    console.log(daysInMonth);
+
+
     let months = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
 
     const [activeMonth, setActiveMonth] = useState(null);
