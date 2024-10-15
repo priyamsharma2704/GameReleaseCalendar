@@ -15,7 +15,9 @@ function Calendar()
     const { days, setDays} = useDayStore();
     const { setMonth, setYear} = useMonthStore();
     const [activeDay, setActiveDay] = useState(null);
+    const [gamesDetails, setGamesDetails] = useState([]);
     let gamesDetailsArr = [];
+    let combined = [];
     function handleDayClick(idx)
     {
         console.log(idx);
@@ -43,10 +45,10 @@ function Calendar()
         console.log(gamesDetailsArr);
 
         //combineing two arrays( days and gamesDetailsArr) so that they can be mapped together while rendering
-        let combined = days.map((day, idx) => {
+        combined = days.map((day, idx) => {
             return {date: day, detail: gamesDetailsArr[idx]}
         })
-
+        setGamesDetails(combined);
         console.log(combined);
     }
 
@@ -77,10 +79,24 @@ function Calendar()
     return(
         <>
             <div className="calendar-con">
-                {days.map((day, idx) =>(
+                {gamesDetails.map((data, idx) =>(
                     <div key={idx} className="month-con" onClick={()=>handleDayClick(idx)}>
-                        <span id="day-span">{day}</span>
-
+                        <span id="day-span">{data.date}</span>
+                        <div className="game-details">
+                            {/* {data.detail.map((game, gameIdx) => (
+                                <div key={gameIdx} className="game-item">
+                                    <p><strong>Title:</strong> {game.name}</p>
+                                    <p><strong>Release Date:</strong> {game.released}</p>
+                                    <img src={game.background_image} alt={game.name} className="game-image" />
+                                </div>
+                            ))} */}
+                            {data.detail.map((game, index) =>(
+                                <div className="gameDetails" key={index}>
+                                    <img id="gameImg" src={game.background_image}/>
+                                    <span id="gameTitle" >{game.name}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 ))}
             </div>
