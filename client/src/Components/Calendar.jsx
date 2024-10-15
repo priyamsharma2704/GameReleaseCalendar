@@ -7,14 +7,12 @@ function Calendar()
     Months are 0 based
     FIXME: 
     
-        1. daysInMonth should be a state
+        1. DONE: daysInMonth should be a state
         2. change cursor to pointer when hovered over the date div
     */
     let days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
 
     const [activeDay, setActiveDay] = useState(null);
-    const [activeMonth, setActiveMonth] = useState(null);
-    const [activeYear, setActiveYear] = useState(null);
 
     async function getGamesList(month, year)
     {
@@ -45,28 +43,6 @@ function Calendar()
             setActiveDay(null);
         else
             setActiveDay(idx);
-    }
-
-    function incrementMonth()
-    {
-        let month = activeMonth + 1;
-        let year = activeYear;
-        if(month > 11)
-        {
-            setActiveYear(year++);
-            setActiveMonth(0);
-        }
-    }
-
-    function decrementMonth()
-    {
-        let month = activeMonth - 1;
-        let year = activeYear;
-        if(month < 0)
-        {
-            setActiveYear(year--);
-            setActiveMonth(11);
-        }
     }
 
     useEffect(() =>
