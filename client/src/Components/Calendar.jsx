@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react';
 import GameModal from './GameModal.jsx';
+import { useMonthStore } from '../Store/store.js';
+import { useDayStore } from '../Store/store.js';
 
 function Calendar()
 {
@@ -7,11 +9,13 @@ function Calendar()
     Months are 0 based
     FIXME: 
     
-        1. DONE: daysInMonth should be a state
+        1. daysInMonth should be a state
         2. change cursor to pointer when hovered over the date div
     */
-    let days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
+    //let days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
 
+    const { days, setDays} = useDayStore();
+    const { setMonth, setYear} = useMonthStore();
     const [activeDay, setActiveDay] = useState(null);
 
     async function getGamesList(month, year)
@@ -47,23 +51,22 @@ function Calendar()
 
     useEffect(() =>
     {
-        //getMonth is 0 based
         let currentMonth = new Date().getMonth(); //logs month num like -> 9
 
-        setActiveMonth(currentMonth);
+        setMonth(currentMonth);
         let currentYear = new Date().getFullYear();// logs year -> 2024
-        setActiveYear(currentYear);
+        setYear(currentYear);
         console.log(currentMonth, currentYear);
 
         let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate(); //logs max num of days in a month -> 31
-
+        setDays(daysInMonth);
         getGamesList(currentMonth, currentYear)
     }, [])
 
     return(
         <>
             <div className="calendar-con">
-                {days.map((day, idx) =>(
+                {days?.map((day, idx) =>(
                     <div key={idx} className="month-con" onClick={()=>handleDayClick(idx)}>
                         <span id="day-span">{day}</span>
 

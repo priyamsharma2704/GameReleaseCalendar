@@ -1,14 +1,19 @@
-
+import { useMonthStore } from "../Store/store";
+import { useDayStore } from "../Store/store";
 function Header()
 {
+    const { incrementMonth, decrementMonth} = useMonthStore();
+    const { setDays} = useDayStore();
     function handlePrevBtnClick()
     {
-        console.log("prev")
+        decrementMonth();
+        setDays();
     }
 
     function handleNextBtnClick()
     {
-        console.log("next")
+        incrementMonth();
+        setDays();
     }
 
     return(
