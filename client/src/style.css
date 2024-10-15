@@ -63,6 +63,20 @@
     font-weight: 600;
 }
 
+.gameDetails
+{
+    width:100%;
+    max-width: 200px;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    margin: 10px;
+}
+#gameImg
+{
+    width:100%;
+    height: auto;
+}
 
 /*--------------- GAME MODAL ---------------*/
 

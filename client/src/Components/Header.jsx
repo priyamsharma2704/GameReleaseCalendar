@@ -1,14 +1,22 @@
-
+import { useMonthStore } from "../Store/store";
+import { useDayStore } from "../Store/store";
+import { getGamesList } from "../Global/utilities";
 function Header()
 {
+    const { month, year, incrementMonth, decrementMonth} = useMonthStore();
+    const { setDays} = useDayStore();
     function handlePrevBtnClick()
     {
-        console.log("prev")
+        decrementMonth();
+        setDays();
+        getGamesList(month, year);
     }
 
     function handleNextBtnClick()
     {
-        console.log("next")
+        incrementMonth();
+        setDays();
+        getGamesList(month, year);
     }
 
     return(
