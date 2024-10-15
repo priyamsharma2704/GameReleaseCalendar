@@ -83,13 +83,6 @@ function Calendar()
                     <div key={idx} className="month-con" onClick={()=>handleDayClick(idx)}>
                         <span id="day-span">{data.date}</span>
                         <div className="game-details">
-                            {/* {data.detail.map((game, gameIdx) => (
-                                <div key={gameIdx} className="game-item">
-                                    <p><strong>Title:</strong> {game.name}</p>
-                                    <p><strong>Release Date:</strong> {game.released}</p>
-                                    <img src={game.background_image} alt={game.name} className="game-image" />
-                                </div>
-                            ))} */}
                             {data.detail.map((game, index) =>(
                                 <div className="gameDetails" key={index}>
                                     <img id="gameImg" src={game.background_image}/>

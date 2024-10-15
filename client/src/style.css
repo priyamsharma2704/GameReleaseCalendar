@@ -42,7 +42,7 @@
 
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     gap: 10px; /* spacing between the month cells */
     padding: 20px;
 }
@@ -53,6 +53,7 @@
     margin: 5px;
     border-radius: 5px;
     padding:5px;
+    display:block;
 }
 
 #day-span
@@ -65,12 +66,15 @@
 
 .gameDetails
 {
-    width:100%;
+    width:85%;
     max-width: 200px;
     height: auto;
     overflow: hidden;
     text-align: center;
+    padding: 5px;
     margin: 10px;
+    background-color: #1a1a1a;
+    border-radius: 5px;
 }
 #gameImg
 {
