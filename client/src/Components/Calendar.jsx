@@ -13,11 +13,13 @@ function Calendar()
         2. change cursor to pointer when hovered over the date div
     */
     const { days, setDays} = useDayStore();
-    const { setMonth, setYear} = useMonthStore();
+    const { month, year, incrementMonth, decrementMonth, setMonth, setYear} = useMonthStore();
     const [activeDay, setActiveDay] = useState(null);
     const [gamesDetails, setGamesDetails] = useState([]);
+
     let gamesDetailsArr = [];
     let combined = [];
+    
     function handleDayClick(idx)
     {
         console.log(idx);
@@ -31,7 +33,6 @@ function Calendar()
     {
         //TODO: Process and finally set the gamesData state
         let filteredGamesData = gamesData.filter((game) => game.background_image);
-        console.log(filteredGamesData);
 
         for(let i = 1 ; i <= days.length; i++)
         {
@@ -42,7 +43,6 @@ function Calendar()
             })
             gamesDetailsArr.push(gameDetailPerDay);
         }
-        console.log(gamesDetailsArr);
 
         //combineing two arrays( days and gamesDetailsArr) so that they can be mapped together while rendering
         combined = days.map((day, idx) => {
@@ -50,6 +50,33 @@ function Calendar()
         })
         setGamesDetails(combined);
         console.log(combined);
+    }
+
+    function handlePrevBtnClick()
+    {
+        decrementMonth();
+        setDays();
+        getGamesList(useMonthStore.getState().month, useMonthStore.getState().year).then((resp) => {
+            processGamesData(resp.results);
+        });
+    }
+
+    function handleNextBtnClick()
+    {
+        incrementMonth();
+        setDays();
+        getGamesList(useMonthStore.getState().month, useMonthStore.getState().year).then((resp) => {
+            processGamesData(resp.results);
+        });
+    }
+
+    function getMonthName(monthNum)
+    {
+        let date = new Date();
+        date.setMonth(monthNum);
+
+        console.log(date.toLocaleString('deault', {month : 'long'}));
+        return date.toLocaleString('deault', {month : 'long'});
     }
 
     useEffect(() =>
@@ -67,10 +94,9 @@ function Calendar()
     // Second useEffect: Triggers when the 'days' state is updated
     useEffect(() => {
         if (days && days.length > 0) { 
-            let currentMonth = new Date().getMonth();
-            let currentYear = new Date().getFullYear();
+            let currentMonth = useMonthStore.getState().month;
+            let currentYear = useMonthStore.getState().year;
             getGamesList(currentMonth, currentYear).then((resp) => {
-                //setGamesData(resp.results);
                 processGamesData(resp.results);
             });
         }
@@ -78,18 +104,20 @@ function Calendar()
 
     return(
         <>
+            <div className="heading">
+                <h1>Games Release Calendar</h1>
+            </div>
+
+            <div className="btn-con">
+                <button className="prevBtn" onClick={handlePrevBtnClick}>&#60; Prev</button>
+                <span className="currMonthSpan">{getMonthName(month)} - {year}</span>
+                <button className="nextBtn" onClick={handleNextBtnClick}>Next &#62;</button>
+            </div>
             <div className="calendar-con">
                 {gamesDetails.map((data, idx) =>(
                     <div key={idx} className="month-con" onClick={()=>handleDayClick(idx)}>
                         <span id="day-span">{data.date}</span>
                         <div className="game-details">
-                            {/* {data.detail.map((game, gameIdx) => (
-                                <div key={gameIdx} className="game-item">
-                                    <p><strong>Title:</strong> {game.name}</p>
-                                    <p><strong>Release Date:</strong> {game.released}</p>
-                                    <img src={game.background_image} alt={game.name} className="game-image" />
-                                </div>
-                            ))} */}
                             {data.detail.map((game, index) =>(
                                 <div className="gameDetails" key={index}>
                                     <img id="gameImg" src={game.background_image}/>

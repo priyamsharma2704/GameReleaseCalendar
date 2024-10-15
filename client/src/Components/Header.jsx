@@ -9,14 +9,18 @@ function Header()
     {
         decrementMonth();
         setDays();
-        getGamesList(month, year);
+        getGamesList(month, year).then((resp) => {
+            processGamesData(resp.results);
+        });
     }
 
     function handleNextBtnClick()
     {
         incrementMonth();
         setDays();
-        getGamesList(month, year);
+        getGamesList(month, year).then((resp) => {
+            processGamesData(resp.results);
+        });
     }
 
     return(
