@@ -70,6 +70,15 @@ function Calendar()
         });
     }
 
+    function getMonthName(monthNum)
+    {
+        let date = new Date();
+        date.setMonth(monthNum);
+
+        console.log(date.toLocaleString('deault', {month : 'long'}));
+        return date.toLocaleString('deault', {month : 'long'});
+    }
+
     useEffect(() =>
     {
         let currentMonth = new Date().getMonth(); //logs month num like -> 9
@@ -101,7 +110,7 @@ function Calendar()
 
             <div className="btn-con">
                 <button className="prevBtn" onClick={handlePrevBtnClick}>&#60; Prev</button>
-                <span className="currMonthBtn">Current Month</span>
+                <span className="currMonthSpan">{getMonthName(month)} - {year}</span>
                 <button className="nextBtn" onClick={handleNextBtnClick}>Next &#62;</button>
             </div>
             <div className="calendar-con">
