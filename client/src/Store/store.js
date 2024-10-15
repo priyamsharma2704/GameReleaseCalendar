@@ -39,3 +39,10 @@ export const useDayStore = create((set) =>({
         return { days: daysArr};
     })
 }));
+
+export const useGameDetails = create((set) =>({
+    gamesDetails:[],
+    setGamesDetails: (details)=>set((state)=>{
+        return { gamesDetails : details};
+    })
+}))

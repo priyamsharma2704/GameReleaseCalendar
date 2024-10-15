@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 // import './App.css';
 import './style.css';
 
-import Header from './Components/Header.jsx';
+// import Header from './Components/Header.jsx';
 import Calendar from './Components/Calendar.jsx';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
       <Calendar></Calendar>
     </>
   )
