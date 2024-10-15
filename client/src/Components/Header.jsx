@@ -1,6 +1,16 @@
 
 function Header()
 {
+    function handlePrevBtnClick()
+    {
+        console.log("prev")
+    }
+
+    function handleNextBtnClick()
+    {
+        console.log("next")
+    }
+
     return(
         <>
             <div className="heading">
@@ -8,9 +18,9 @@ function Header()
             </div>
 
             <div className="btn-con">
-                <button className="prevBtn">&#60; Prev</button>
+                <button className="prevBtn" onClick={handlePrevBtnClick}>&#60; Prev</button>
                 <span className="currMonthBtn">Current Month</span>
-                <button className="nextBtn">Next &#62;</button>
+                <button className="nextBtn" onClick={handleNextBtnClick}>Next &#62;</button>
             </div>
         </>
     )
