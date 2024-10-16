@@ -96,6 +96,11 @@
     display: flex;
     justify-content: center;
     padding: 20px;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
 }
 
 .modal
@@ -104,7 +109,7 @@
     border-radius: 10px;
     width: 500px;
     color: #1a1a1a;
-    margin: 20px;
+    margin: 0px;
     padding: 5px;
 }
 
