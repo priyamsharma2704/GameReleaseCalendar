@@ -16,17 +16,20 @@ function Calendar()
     const { month, year, incrementMonth, decrementMonth, setMonth, setYear} = useMonthStore();
     const [activeDay, setActiveDay] = useState(null);
     const [gamesDetails, setGamesDetails] = useState([]);
+    const [gameForTheDay, setGameForTheDay] = useState({});
 
     let gamesDetailsArr = [];
     let combined = [];
     
-    function handleDayClick(idx)
+    function handleDayClick(idx, game)
     {
-        console.log(idx);
+        //console.log(idx, game);
         if(activeDay == idx)
             setActiveDay(null);
         else
             setActiveDay(idx);
+
+        setGameForTheDay(game);
     }
 
     function processGamesData(gamesData)
@@ -115,11 +118,11 @@ function Calendar()
             </div>
             <div className="calendar-con">
                 {gamesDetails.map((data, idx) =>(
-                    <div key={idx} className="month-con" onClick={()=>handleDayClick(idx)}>
+                    <div key={idx} className="month-con">
                         <span id="day-span">{data.date}</span>
                         <div className="game-details">
                             {data.detail.map((game, index) =>(
-                                <div className="gameDetails" key={index}>
+                                <div className="gameDetails" key={index} onClick={()=>handleDayClick(index, game)}>
                                     <img id="gameImg" src={game.background_image}/>
                                     <span id="gameTitle" >{game.name}</span>
                                 </div>
@@ -130,7 +133,7 @@ function Calendar()
             </div>
             <div className="modal-con">
                 {activeDay !== null && <GameModal closeModal={()=>handleDayClick(activeDay)} 
-                idx={activeDay}></GameModal>}
+                idx={activeDay} game={gameForTheDay}></GameModal>}
             </div>
 
         </>

@@ -96,26 +96,39 @@
     display: flex;
     justify-content: center;
     padding: 20px;
+
+    position:fixed;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
 }
 
 .modal
 {
-    background-color: white;
+    background-color:#1a1a1a;
     border-radius: 10px;
     width: 500px;
-    color: #1a1a1a;
-    margin: 20px;
+    color: white;
+    margin: 0px;
     padding: 5px;
+}
+
+.details
+{
+    margin-left: 20px;
 }
 
 .label
 {
-    font-weight: 500;;
+    font-weight: 500;
 }
 
-#description
+.description
 {
-    font-weight: 100px;;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: larger;
 }
 
 #close
@@ -125,6 +138,13 @@
     float: right;
     padding: 10px;
 }
+
+#screenshots
+{
+    width: 100px;
+    height: 100px;
+}
+
 #close:hover{
 cursor: pointer;
 }
